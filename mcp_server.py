@@ -11,9 +11,9 @@ from pydantic import BaseModel
 import asyncio
 import uvicorn
 
-from .agent import run_search, extract_search_parameters
-from .dependencies import AgentDependencies
-from .models import SearchResponse, PartnerOrganization, ProjectOpportunity
+from agent import run_search, extract_search_parameters
+from dependencies import AgentDependencies
+from models import SearchResponse, PartnerOrganization, ProjectOpportunity
 
 
 # Request Models
@@ -293,7 +293,7 @@ async def get_search_parameters():
 def run_server(host: str = "localhost", port: int = 8000, reload: bool = False):
     """Run the MCP server."""
     uvicorn.run(
-        "erasmus_partner_agent.mcp_server:app",
+        "mcp_server:app",
         host=host,
         port=port,
         reload=reload,
@@ -302,7 +302,7 @@ def run_server(host: str = "localhost", port: int = 8000, reload: bool = False):
 
 
 if __name__ == "__main__":
-    from .settings import load_settings
+    from settings import load_settings
     
     settings = load_settings()
     run_server(

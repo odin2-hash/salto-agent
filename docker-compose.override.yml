@@ -20,7 +20,7 @@ services:
       - ./dev-logs:/app/logs
     
     # Override command for development with auto-reload
-    command: ["python", "-m", "uvicorn", "erasmus_partner_agent.mcp_server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    command: ["python", "simple_mcp_server.py"]
     
     # Development port mapping (can be different from production)
     ports:

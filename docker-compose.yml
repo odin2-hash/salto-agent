@@ -15,6 +15,10 @@ services:
       - LLM_MODEL=gpt-4
       - LLM_BASE_URL=https://api.openai.com/v1
       
+      # SALTO-YOUTH Authentication (REQUIRED)
+      - SALTO_USERNAME=${SALTO_USERNAME}
+      - SALTO_PASSWORD=${SALTO_PASSWORD}
+      
       # SALTO-YOUTH Configuration
       - OTLAS_BASE_URL=https://www.salto-youth.net/tools/otlas-partner-finding
       - USER_AGENT=ErasmusPartnerAgent/1.0

@@ -1,5 +1,5 @@
 # Multi-stage build for optimal image size
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 # Set build arguments
 ARG BUILDPLATFORM
@@ -54,5 +54,5 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
 # Expose port
 EXPOSE 8000
 
-# Default command - run MCP server
-CMD ["python", "-m", "erasmus_partner_agent.mcp_server"]
+# Default command - run simple MCP server
+CMD ["python", "simple_mcp_server.py"]
