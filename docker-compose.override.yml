@@ -1,0 +1,32 @@
+# Docker Compose Override for Development
+# This file is automatically loaded and overrides docker-compose.yml for local development
+
+version: '3.8'
+
+services:
+  erasmus-partner-agent:
+    environment:
+      # Development settings
+      - APP_ENV=development
+      - LOG_LEVEL=DEBUG
+      - DEBUG=true
+      - MCP_SERVER_RELOAD=true
+    
+    volumes:
+      # Mount source code for hot reloading in development
+      - .:/app
+      # Override exports and logs to local directories
+      - ./dev-exports:/app/exports
+      - ./dev-logs:/app/logs
+    
+    # Override command for development with auto-reload
+    command: ["python", "-m", "uvicorn", "erasmus_partner_agent.mcp_server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    
+    # Development port mapping (can be different from production)
+    ports:
+      - "8000:8000"
+      
+  # Remove nginx in development
+  nginx:
+    profiles:
+      - disabled
