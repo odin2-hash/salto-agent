@@ -1,8 +1,6 @@
 # Docker Compose Override for Development
 # This file is automatically loaded and overrides docker-compose.yml for local development
 
-version: '3.8'
-
 services:
   erasmus-partner-agent:
     environment:
